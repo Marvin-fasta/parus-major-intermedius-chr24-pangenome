@@ -1,0 +1,39 @@
+results_dir: "results_pggb_12_individuals"
+
+threads: 20
+
+# PGGB parameters
+pggb_identity: 97
+pggb_segment_length: 5000
+
+# SV definition
+sv_min_size: 50
+
+# Reference sample and haplotype for vg deconstruct
+reference_sample: "Z0002"
+reference_haplotype: 1
+
+# Order matters: one new cumulative PGGB graph is made per sample
+samples:
+  - "Z0002"
+  - "Z0016"
+  - "Z0020"
+  - "Z0043"
+  - "Z0044"
+  - "Z0049"
+  - "Z0051"
+  - "Z0064"
+  - "Z0065"
+  - "Z0067"
+  - "Z0072"
+  - "Z0084"
+
+# Standard HapDup phased output paths for all samples except Z0072.
+# {sample} and {hap} are automatically substituted by Snakemake.
+hapdup_template: "/path/to/hapdup_phased_{hap}.fasta"
+
+# Z0072 uses a different directory.
+hapdup_special:
+  Z0072:
+    hap1: "path/to/hapdup_phased_1.fasta"
+    hap2: "path/to/hapdup_phased_2.fasta"
