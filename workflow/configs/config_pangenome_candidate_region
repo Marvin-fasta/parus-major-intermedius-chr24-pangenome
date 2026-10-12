@@ -1,0 +1,53 @@
+results_dir: "results_pggb_12_individuals_region"
+
+threads: 20
+
+# Parus major reference genome used in the paper
+reference_fasta: "/path/to/reference/GCF_001522545.3_Parus_major1.1_genomic.fna"
+
+# Exact candidate interval from the paper
+reference_chromosome: "NC_031792.1"
+region_start: 1490771
+region_end: 1525695
+
+# Additional sequence on both sides of the mapped interval
+flank_bp: 10000
+
+# Require at least this fraction of the exact 34,925 bp region to align
+min_query_coverage: 0.90
+min_mapq: 20
+
+# PGGB settings
+pggb_identity: 97
+pggb_segment_length: 5000
+
+# Structural variant definition
+sv_min_size: 50
+
+# All VCF statistics are relative to this haplotype
+reference_sample: "Z0002"
+reference_haplotype: 1
+
+# Order matters: one cumulative graph is made after adding each sample
+samples:
+  - "Z0002"
+  - "Z0016"
+  - "Z0020"
+  - "Z0043"
+  - "Z0044"
+  - "Z0049"
+  - "Z0051"
+  - "Z0064"
+  - "Z0065"
+  - "Z0067"
+  - "Z0072"
+  - "Z0084"
+
+# Standard path for all samples except Z0072
+hapdup_template: "/path/to/hapdup_phased_{hap}.fasta"
+
+# Z0072 has a different path
+hapdup_special:
+  Z0072:
+    hap1: "/path/to/hapdup_phased_1.fasta"
+    hap2: "/path/to/hapdup_phased_2.fasta"
