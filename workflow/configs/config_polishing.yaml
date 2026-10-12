@@ -1,0 +1,25 @@
+sample: "sample-ID"
+
+results_dir: "results_snakemake_polishing"
+
+# Input assembly (the original Flye assembly)
+input_assembly: "/path/to/assembly/assembly.fasta"
+
+# ONT reads restricted to chromosome 24
+ont_reads: "/path/to/reads/chr24.1.fastq"
+
+# Illumina paired-end reads
+illumina_r1:
+  - "/path/to/reads/read_name_1.fq.gz"
+illumina_r2:
+  - "/path/to/reads/read_name_2.fq.gz"
+
+threads: 20
+
+# Medaka
+medaka_model: "r1041_e82_400bps_sup_v4.3.0"
+
+# Pilon
+java_heap: "200G"
+pilon_chunksize: 100000
+pilon_downsample: "42.50"
